@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Meal Planner - Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    :root {
+      --primary: #7C4DFF;
+      --primary-dark: #5E35B1;
+      --accent: #FF4081;
+      --dark: #121212;
+      --card-bg: #1E1E1E;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0B0B0;
+      --gradient-primary: linear-gradient(135deg, #7C4DFF 0%, #448AFF 100%);
+      --gradient-accent: linear-gradient(135deg, #FF4081 0%, #FF9100 100%);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--dark) 0%, #1A1A1A 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(124, 77, 255, 0.1), transparent 70%);
+      pointer-events: none;
+    }
+
+    .container {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: var(--shadow-lg);
+      width: 350px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 0.6s ease;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+
+    .container h2 {
+      margin-bottom: 30px;
+      color: var(--text-primary);
+      font-size: 28px;
+      font-weight: 600;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      outline: none;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      font-size: 16px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    input::placeholder {
+      color: var(--text-secondary);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 24px;
+      background: var(--gradient-primary);
+      color: var(--text-primary);
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    button:hover::before {
+      transform: translateY(0);
+    }
+
+    .toggle-btn {
+      margin-top: 24px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+
+    .toggle-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-accent);
+      transition: width 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      color: var(--accent);
+    }
+
+    .toggle-btn:hover::after {
+      width: 100%;
+    }
+
+    .error-message {
+      color: #FF5252;
+      margin-top: 12px;
+      font-size: 14px;
+      display: none;
+      animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    .success-message {
+      color: #69F0AE;
+      margin-top: 12px;
+      font-size: 14px;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shake {
+      10%, 90% {
+        transform: translateX(-1px);
+      }
+      20%, 80% {
+        transform: translateX(2px);
+      }
+      30%, 50%, 70% {
+        transform: translateX(-4px);
+      }
+      40%, 60% {
+        transform: translateX(4px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container animate__animated animate__fadeIn">
+  <h2 id="form-title">Login</h2>
+  
+  <input type="text" id="username" placeholder="Username" required>
+  <input type="password" id="password" placeholder="Password" required>
+  
+  <div id="error-message" class="error-message"></div>
+  <div id="success-message" class="success-message"></div>
+
+  <button onclick="handleSubmit()" id="submit-btn">Login</button>
+  <div class="toggle-btn" onclick="toggleMode()">Don't have an account? Register</div>
+</div>
+
+<script>
+let isLoginMode = true;
+
+function toggleMode() {
+  isLoginMode = !isLoginMode;
+  const formTitle = document.getElementById('form-title');
+  const submitBtn = document.getElementById('submit-btn');
+  const toggleBtn = document.querySelector('.toggle-btn');
+  
+  if (isLoginMode) {
+    formTitle.innerText = 'Login';
+    submitBtn.innerText = 'Login';
+    toggleBtn.innerText = "Don't have an account? Register";
+  } else {
+    formTitle.innerText = 'Register';
+    submitBtn.innerText = 'Register';
+    toggleBtn.innerText = 'Already have an account? Login';
+  }
+  
+  // Clear messages and inputs
+  clearMessages();
+  document.getElementById('username').value = '';
+  document.getElementById('password').value = '';
+}
+
+function showError(message) {
+  const errorDiv = document.getElementById('error-message');
+  const successDiv = document.getElementById('success-message');
+  errorDiv.style.display = 'block';
+  successDiv.style.display = 'none';
+  errorDiv.innerText = message;
+}
+
+function showSuccess(message) {
+  const errorDiv = document.getElementById('error-message');
+  const successDiv = document.getElementById('success-message');
+  errorDiv.style.display = 'none';
+  successDiv.style.display = 'block';
+  successDiv.innerText = message;
+}
+
+function clearMessages() {
+  const errorDiv = document.getElementById('error-message');
+  const successDiv = document.getElementById('success-message');
+  errorDiv.style.display = 'none';
+  successDiv.style.display = 'none';
+}
+
+async function handleSubmit() {
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value.trim();
+  
+  // Basic validation
+  if (!username || !password) {
+    showError('Please fill in all fields');
+    return;
+  }
+  
+  const endpoint = isLoginMode ? 'login.php' : 'register.php';
+  
+  try {
+    showSuccess('Processing...');
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log('Server response:', data);
+    
+    if (data.success) {
+      if (isLoginMode) {
+        try {
+          // Validate user data
+          if (!data.user || !data.user.id || !data.user.username) {
+            throw new Error('Invalid user data received from server');
+          }
+          
+          // Clear any existing session
+          sessionStorage.clear();
+          
+          // Store user data in session storage
+          const userData = {
+            id: data.user.id,
+            username: data.user.username
+          };
+          
+          sessionStorage.setItem('user', JSON.stringify(userData));
+          console.log('Session storage set:', sessionStorage.getItem('user'));
+          
+          // Verify the session was set correctly
+          const storedUser = JSON.parse(sessionStorage.getItem('user'));
+          if (!storedUser || !storedUser.id) {
+            throw new Error('Session storage verification failed');
+          }
+          
+          // Show success message and redirect
+          showSuccess('Login successful! Redirecting...');
+          setTimeout(() => {
+            window.location.href = 'dashboard.html';
+          }, 1500);
+        } catch (storageError) {
+          console.error('Session storage error:', storageError);
+          showError('Error setting up session. Please try again.');
+          // Clear any partial session data
+          sessionStorage.clear();
+        }
+      } else {
+        showSuccess('Registration successful! Please log in.');
+        setTimeout(() => {
+          toggleMode();
+        }, 1500);
+      }
+    } else {
+      showError(data.message || 'An error occurred');
+    }
+  } catch (error) {
+    console.error('Request error:', error);
+    showError('An error occurred. Please try again later.');
+    sessionStorage.clear();
+  }
+}
+
+// Add session check on page load
+document.addEventListener('DOMContentLoaded', () => {
+  // Clear any existing session when arriving at login page
+  sessionStorage.clear();
+});
+
+// Handle Enter key
+document.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    handleSubmit();
+  }
+});
+</script>
+
+</body>
+</html>
+

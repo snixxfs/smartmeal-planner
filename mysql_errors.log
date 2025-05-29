@@ -1,0 +1,632 @@
+[12-May-2025 15:56:40 Europe/Berlin] Raw input received: {"username":"abcd","password":"1234"}
+[12-May-2025 15:56:40 Europe/Berlin] Decoded data: Array
+(
+    [username] => abcd
+    [password] => 1234
+)
+
+[12-May-2025 15:56:40 Europe/Berlin] Sanitized username: abcd
+[12-May-2025 15:56:40 Europe/Berlin] Registration error: Password must be at least 6 characters long
+[12-May-2025 15:58:12 Europe/Berlin] Raw input received: {"username":"abcd","password":"abcd1234"}
+[12-May-2025 15:58:12 Europe/Berlin] Decoded data: Array
+(
+    [username] => abcd
+    [password] => abcd1234
+)
+
+[12-May-2025 15:58:12 Europe/Berlin] Sanitized username: abcd
+[12-May-2025 15:58:12 Europe/Berlin] User successfully registered with ID: 2
+[12-May-2025 16:16:20 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No connection could be made because the target machine actively refused it in C:\xampp\htdocs\smart-meal-planner\db.php on line 18
+[12-May-2025 16:16:20 Europe/Berlin] MySQL Connection Error: No connection could be made because the target machine actively refused it
+[12-May-2025 16:16:20 Europe/Berlin] Database Error: Connection failed: No connection could be made because the target machine actively refused it
+[12-May-2025 16:16:20 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\smart-meal-planner\db.php:86
+Stack trace:
+#0 C:\xampp\htdocs\smart-meal-planner\db.php(86): mysqli->close()
+#1 C:\xampp\htdocs\smart-meal-planner\login.php(10): include('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\smart-meal-planner\db.php on line 86
+[12-May-2025 16:19:39 Europe/Berlin] Database Error: mysqli::__construct(): (HY000/2002): No connection could be made because the target machine actively refused it
+[12-May-2025 16:22:25 Europe/Berlin] Database Error: mysqli::__construct(): (HY000/2002): No connection could be made because the target machine actively refused it
+[12-May-2025 16:46:10 Europe/Berlin] Login error: Invalid username or password
+[12-May-2025 16:47:53 Europe/Berlin] Login attempt - Raw input received: {"username":"abcd","password":"abcd1234"}
+[12-May-2025 16:47:53 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => abcd
+    [password] => abcd1234
+)
+
+[12-May-2025 16:47:53 Europe/Berlin] Login error: Invalid username or password
+[12-May-2025 16:49:41 Europe/Berlin] Login attempt - Raw input received: {"username":"testuser","password":"password"}
+[12-May-2025 16:49:41 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => testuser
+    [password] => password
+)
+
+[12-May-2025 16:49:41 Europe/Berlin] Login failed: Invalid password for user - testuser
+[12-May-2025 16:49:41 Europe/Berlin] Login error: Invalid username or password
+[12-May-2025 16:51:53 Europe/Berlin] Login attempt - Raw input received: {"username":"test@example.com","password":"password"}
+[12-May-2025 16:51:53 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => test@example.com
+    [password] => password
+)
+
+[12-May-2025 16:51:53 Europe/Berlin] Login failed: Invalid password for user - test@example.com
+[12-May-2025 16:51:53 Europe/Berlin] Login error: Invalid username or password
+[12-May-2025 16:53:45 Europe/Berlin] Login attempt - Raw input received: {"username":"test@example.com","password":"password123"}
+[12-May-2025 16:53:45 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => test@example.com
+    [password] => password123
+)
+
+[12-May-2025 16:58:19 Europe/Berlin] Raw input received: {"username":"abcd","password":"pass1234"}
+[12-May-2025 16:58:19 Europe/Berlin] Decoded data: Array
+(
+    [username] => abcd
+    [password] => pass1234
+)
+
+[12-May-2025 16:58:19 Europe/Berlin] Sanitized username: abcd
+[12-May-2025 16:58:19 Europe/Berlin] User successfully registered with ID: 2
+[12-May-2025 16:58:29 Europe/Berlin] Login attempt - Raw input received: {"username":"abcd","password":"pass1234"}
+[12-May-2025 16:58:29 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => abcd
+    [password] => pass1234
+)
+
+[12-May-2025 17:02:56 Europe/Berlin] Raw input received: {"username":"aths","password":"passaths"}
+[12-May-2025 17:02:56 Europe/Berlin] Decoded data: Array
+(
+    [username] => aths
+    [password] => passaths
+)
+
+[12-May-2025 17:02:56 Europe/Berlin] Sanitized username: aths
+[12-May-2025 17:02:56 Europe/Berlin] User successfully registered with ID: 3
+[12-May-2025 17:03:04 Europe/Berlin] Login attempt - Raw input received: {"username":"aths","password":"passaths"}
+[12-May-2025 17:03:04 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => aths
+    [password] => passaths
+)
+
+[12-May-2025 17:07:57 Europe/Berlin] Raw input received: {"username":"nishh","password":"123456"}
+[12-May-2025 17:07:57 Europe/Berlin] Decoded data: Array
+(
+    [username] => nishh
+    [password] => 123456
+)
+
+[12-May-2025 17:07:57 Europe/Berlin] Sanitized username: nishh
+[12-May-2025 17:07:57 Europe/Berlin] User successfully registered with ID: 4
+[12-May-2025 17:08:04 Europe/Berlin] Login attempt - Raw input received: {"username":"nishh","password":"123456"}
+[12-May-2025 17:08:04 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => nishh
+    [password] => 123456
+)
+
+[12-May-2025 17:10:35 Europe/Berlin] Login attempt - Raw input received: {"username":"aths","password":"passaths"}
+[12-May-2025 17:10:35 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => aths
+    [password] => passaths
+)
+
+[12-May-2025 17:10:51 Europe/Berlin] Login attempt - Raw input received: {"username":"nishh","password":"123456"}
+[12-May-2025 17:10:51 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => nishh
+    [password] => 123456
+)
+
+[12-May-2025 18:59:33 Europe/Berlin] Raw input received: {"username":"snixx","password":"12345678"}
+[12-May-2025 18:59:33 Europe/Berlin] Decoded data: Array
+(
+    [username] => snixx
+    [password] => 12345678
+)
+
+[12-May-2025 18:59:33 Europe/Berlin] Sanitized username: snixx
+[12-May-2025 18:59:33 Europe/Berlin] User successfully registered with ID: 5
+[12-May-2025 18:59:43 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"12345678"}
+[12-May-2025 18:59:43 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 12345678
+)
+
+[12-May-2025 18:59:43 Europe/Berlin] Login failed: User not found - snixxfs
+[12-May-2025 18:59:43 Europe/Berlin] Login error: Invalid username or password
+[12-May-2025 18:59:46 Europe/Berlin] Login attempt - Raw input received: {"username":"snixx","password":"12345678"}
+[12-May-2025 18:59:46 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixx
+    [password] => 12345678
+)
+
+[13-May-2025 07:54:35 Europe/Berlin] Raw input received: {"username":"sirrr","password":"123456"}
+[13-May-2025 07:54:35 Europe/Berlin] Decoded data: Array
+(
+    [username] => sirrr
+    [password] => 123456
+)
+
+[13-May-2025 07:54:35 Europe/Berlin] Sanitized username: sirrr
+[13-May-2025 07:54:35 Europe/Berlin] User successfully registered with ID: 6
+[13-May-2025 08:42:19 Europe/Berlin] Raw input received: {"username":"studeny","password":"123456"}
+[13-May-2025 08:42:19 Europe/Berlin] Decoded data: Array
+(
+    [username] => studeny
+    [password] => 123456
+)
+
+[13-May-2025 08:42:19 Europe/Berlin] Sanitized username: studeny
+[13-May-2025 08:42:19 Europe/Berlin] User successfully registered with ID: 7
+[13-May-2025 11:31:27 Europe/Berlin] Raw input received: {"username":"stttt","password":"1234"}
+[13-May-2025 11:31:27 Europe/Berlin] Decoded data: Array
+(
+    [username] => stttt
+    [password] => 1234
+)
+
+[13-May-2025 11:31:27 Europe/Berlin] Sanitized username: stttt
+[13-May-2025 11:31:27 Europe/Berlin] Registration error: Password must be at least 6 characters long
+[13-May-2025 11:32:45 Europe/Berlin] Raw input received: {"username":"sttt","password":"123456"}
+[13-May-2025 11:32:45 Europe/Berlin] Decoded data: Array
+(
+    [username] => sttt
+    [password] => 123456
+)
+
+[13-May-2025 11:32:45 Europe/Berlin] Sanitized username: sttt
+[13-May-2025 11:32:45 Europe/Berlin] User successfully registered with ID: 8
+[13-May-2025 11:35:12 Europe/Berlin] Raw input received: {"username":"stt","password":"1234"}
+[13-May-2025 11:35:12 Europe/Berlin] Decoded data: Array
+(
+    [username] => stt
+    [password] => 1234
+)
+
+[13-May-2025 11:35:12 Europe/Berlin] Sanitized username: stt
+[13-May-2025 11:35:12 Europe/Berlin] Registration error: Password must be at least 6 characters long
+[13-May-2025 11:37:36 Europe/Berlin] Raw input received: {"username":"nishh","password":"1234"}
+[13-May-2025 11:37:36 Europe/Berlin] Decoded data: Array
+(
+    [username] => nishh
+    [password] => 1234
+)
+
+[13-May-2025 11:37:36 Europe/Berlin] Sanitized username: nishh
+[13-May-2025 11:37:36 Europe/Berlin] Registration error: Password must be at least 6 characters long
+[13-May-2025 11:39:24 Europe/Berlin] Raw input received: {"username":"books","password":"123456"}
+[13-May-2025 11:39:24 Europe/Berlin] Decoded data: Array
+(
+    [username] => books
+    [password] => 123456
+)
+
+[13-May-2025 11:39:24 Europe/Berlin] Sanitized username: books
+[13-May-2025 11:39:25 Europe/Berlin] User successfully registered with ID: 9
+[13-May-2025 11:42:37 Europe/Berlin] Raw input received: {"username":"student","password":"123456"}
+[13-May-2025 11:42:37 Europe/Berlin] Decoded data: Array
+(
+    [username] => student
+    [password] => 123456
+)
+
+[13-May-2025 11:42:37 Europe/Berlin] Sanitized username: student
+[13-May-2025 11:42:37 Europe/Berlin] User successfully registered with ID: 10
+[13-May-2025 11:45:41 Europe/Berlin] Raw input received: {"username":"stud","password":"123456"}
+[13-May-2025 11:45:41 Europe/Berlin] Decoded data: Array
+(
+    [username] => stud
+    [password] => 123456
+)
+
+[13-May-2025 11:45:41 Europe/Berlin] Sanitized username: stud
+[13-May-2025 11:45:42 Europe/Berlin] User successfully registered with ID: 11
+[13-May-2025 11:45:55 Europe/Berlin] Login attempt - Raw input received: {"username":"student","password":"123456"}
+[13-May-2025 11:45:55 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => student
+    [password] => 123456
+)
+
+[13-May-2025 11:47:16 Europe/Berlin] Login attempt - Raw input received: {"username":"abcd","password":"abcd1234"}
+[13-May-2025 11:47:16 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => abcd
+    [password] => abcd1234
+)
+
+[13-May-2025 11:47:16 Europe/Berlin] Login failed: Invalid password for user - abcd
+[13-May-2025 11:47:16 Europe/Berlin] Login error: Invalid username or password
+[13-May-2025 11:47:28 Europe/Berlin] Login attempt - Raw input received: {"username":"stud","password":"123456"}
+[13-May-2025 11:47:28 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => stud
+    [password] => 123456
+)
+
+[14-May-2025 18:07:09 Europe/Berlin] Error creating meals table: Failed to add the foreign key constraint. Missing column 'id' for constraint 'meals_ibfk_1' in the referenced table 'user'
+[14-May-2025 18:07:09 Europe/Berlin] Database Error: Error creating meals table: Failed to add the foreign key constraint. Missing column 'id' for constraint 'meals_ibfk_1' in the referenced table 'user'
+[14-May-2025 18:12:05 Europe/Berlin] Login attempt - Raw input received: {"username":"admin","password":"admin123"}
+[14-May-2025 18:12:05 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => admin
+    [password] => admin123
+)
+
+[14-May-2025 18:14:32 Europe/Berlin] Login attempt - Raw input received: {"username":"admin","password":"admin123"}
+[14-May-2025 18:14:32 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => admin
+    [password] => admin123
+)
+
+[14-May-2025 18:20:02 Europe/Berlin] Login attempt - Raw input received: {"username":"admin","password":"admin123"}
+[14-May-2025 18:20:02 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => admin
+    [password] => admin123
+)
+
+[14-May-2025 18:23:02 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function close() on bool in C:\xampp\htdocs\smart-meal-planner\admin_login.php:72
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\smart-meal-planner\admin_login.php on line 72
+[14-May-2025 18:23:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function close() on bool in C:\xampp\htdocs\smart-meal-planner\admin_login.php:72
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\smart-meal-planner\admin_login.php on line 72
+[14-May-2025 18:23:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function close() on bool in C:\xampp\htdocs\smart-meal-planner\admin_login.php:72
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\smart-meal-planner\admin_login.php on line 72
+[14-May-2025 18:28:59 Europe/Berlin] Raw input received: {"username":"add","password":"asdfghasdf"}
+[14-May-2025 18:28:59 Europe/Berlin] Decoded data: Array
+(
+    [username] => add
+    [password] => asdfghasdf
+)
+
+[14-May-2025 18:28:59 Europe/Berlin] Sanitized username: add
+[14-May-2025 18:28:59 Europe/Berlin] User successfully registered with ID: 6
+[22-May-2025 17:08:23 Europe/Berlin] Login attempt - Raw input received: {"username":"abcd","password":"abcd1234"}
+[22-May-2025 17:08:23 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => abcd
+    [password] => abcd1234
+)
+
+[22-May-2025 17:08:23 Europe/Berlin] Login failed: User not found - abcd
+[22-May-2025 17:08:23 Europe/Berlin] Login error: Invalid username or password
+[22-May-2025 17:08:27 Europe/Berlin] Login attempt - Raw input received: {"username":"abcd","password":"abcd123"}
+[22-May-2025 17:08:27 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => abcd
+    [password] => abcd123
+)
+
+[22-May-2025 17:08:27 Europe/Berlin] Login failed: User not found - abcd
+[22-May-2025 17:08:27 Europe/Berlin] Login error: Invalid username or password
+[22-May-2025 17:08:28 Europe/Berlin] Login attempt - Raw input received: {"username":"abcd","password":"abcd123"}
+[22-May-2025 17:08:28 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => abcd
+    [password] => abcd123
+)
+
+[22-May-2025 17:08:28 Europe/Berlin] Login failed: User not found - abcd
+[22-May-2025 17:08:28 Europe/Berlin] Login error: Invalid username or password
+[22-May-2025 17:08:41 Europe/Berlin] Login attempt - Raw input received: {"username":"stud","password":"123456"}
+[22-May-2025 17:08:41 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => stud
+    [password] => 123456
+)
+
+[22-May-2025 17:08:41 Europe/Berlin] Login failed: User not found - stud
+[22-May-2025 17:08:41 Europe/Berlin] Login error: Invalid username or password
+[22-May-2025 17:08:42 Europe/Berlin] Login attempt - Raw input received: {"username":"stud","password":"123456"}
+[22-May-2025 17:08:42 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => stud
+    [password] => 123456
+)
+
+[22-May-2025 17:08:42 Europe/Berlin] Login failed: User not found - stud
+[22-May-2025 17:08:42 Europe/Berlin] Login error: Invalid username or password
+[22-May-2025 17:08:54 Europe/Berlin] Raw input received: {"username":"snixxfs","password":"1234567"}
+[22-May-2025 17:08:54 Europe/Berlin] Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 1234567
+)
+
+[22-May-2025 17:08:54 Europe/Berlin] Sanitized username: snixxfs
+[22-May-2025 17:08:54 Europe/Berlin] User successfully registered with ID: 7
+[22-May-2025 17:09:05 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"1234567"}
+[22-May-2025 17:09:05 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 1234567
+)
+
+[28-May-2025 16:56:22 Europe/Berlin] Login attempt - Raw input received: {"username":"abcd","password":"abcd1234"}
+[28-May-2025 16:56:22 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => abcd
+    [password] => abcd1234
+)
+
+[28-May-2025 16:56:22 Europe/Berlin] Login failed: User not found - abcd
+[28-May-2025 16:56:22 Europe/Berlin] Login error: Invalid username or password
+[28-May-2025 16:56:28 Europe/Berlin] Login attempt - Raw input received: {"username":"abcd","password":"abcd1234"}
+[28-May-2025 16:56:28 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => abcd
+    [password] => abcd1234
+)
+
+[28-May-2025 16:56:28 Europe/Berlin] Login failed: User not found - abcd
+[28-May-2025 16:56:28 Europe/Berlin] Login error: Invalid username or password
+[28-May-2025 16:56:37 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"12345678"}
+[28-May-2025 16:56:37 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 12345678
+)
+
+[28-May-2025 16:56:37 Europe/Berlin] Login failed: Invalid password for user - snixxfs
+[28-May-2025 16:56:37 Europe/Berlin] Login error: Invalid username or password
+[28-May-2025 16:56:38 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"123456"}
+[28-May-2025 16:56:38 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 123456
+)
+
+[28-May-2025 16:56:38 Europe/Berlin] Login failed: Invalid password for user - snixxfs
+[28-May-2025 16:56:38 Europe/Berlin] Login error: Invalid username or password
+[28-May-2025 16:56:40 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"1234567"}
+[28-May-2025 16:56:40 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 1234567
+)
+
+[28-May-2025 16:59:54 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"123456"}
+[28-May-2025 16:59:54 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 123456
+)
+
+[28-May-2025 16:59:54 Europe/Berlin] Login failed: Invalid password for user - snixxfs
+[28-May-2025 16:59:54 Europe/Berlin] Login error: Invalid username or password
+[28-May-2025 16:59:56 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"1234567"}
+[28-May-2025 16:59:56 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 1234567
+)
+
+[28-May-2025 17:20:09 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"123456"}
+[28-May-2025 17:20:09 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 123456
+)
+
+[28-May-2025 17:20:09 Europe/Berlin] Login failed: User not found - snixxfs
+[28-May-2025 17:20:09 Europe/Berlin] Login error: Invalid username or password
+[28-May-2025 17:20:13 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"1234567"}
+[28-May-2025 17:20:13 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 1234567
+)
+
+[28-May-2025 17:20:13 Europe/Berlin] Login failed: User not found - snixxfs
+[28-May-2025 17:20:13 Europe/Berlin] Login error: Invalid username or password
+[28-May-2025 17:20:16 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"1234567"}
+[28-May-2025 17:20:16 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 1234567
+)
+
+[28-May-2025 17:20:16 Europe/Berlin] Login failed: User not found - snixxfs
+[28-May-2025 17:20:16 Europe/Berlin] Login error: Invalid username or password
+[28-May-2025 17:20:20 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"123456"}
+[28-May-2025 17:20:20 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 123456
+)
+
+[28-May-2025 17:20:20 Europe/Berlin] Login failed: User not found - snixxfs
+[28-May-2025 17:20:20 Europe/Berlin] Login error: Invalid username or password
+[28-May-2025 17:20:22 Europe/Berlin] Login attempt - Raw input received: {"username":"snixxfs","password":"1234567"}
+[28-May-2025 17:20:22 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => snixxfs
+    [password] => 1234567
+)
+
+[28-May-2025 17:20:22 Europe/Berlin] Login failed: User not found - snixxfs
+[28-May-2025 17:20:22 Europe/Berlin] Login error: Invalid username or password
+[28-May-2025 17:20:45 Europe/Berlin] Login attempt - Raw input received: {"username":"test@example.com","password":"password123"}
+[28-May-2025 17:20:45 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => test@example.com
+    [password] => password123
+)
+
+[28-May-2025 17:33:19 Europe/Berlin] Raw input received: {"username":"ayush","password":"ayushsk"}
+[28-May-2025 17:33:19 Europe/Berlin] Decoded data: Array
+(
+    [username] => ayush
+    [password] => ayushsk
+)
+
+[28-May-2025 17:33:19 Europe/Berlin] Sanitized username: ayush
+[28-May-2025 17:33:19 Europe/Berlin] User successfully registered with ID: 2
+[28-May-2025 17:33:27 Europe/Berlin] Login attempt - Raw input received: {"username":"ayush","password":"ayushsk"}
+[28-May-2025 17:33:27 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => ayush
+    [password] => ayushsk
+)
+
+[28-May-2025 17:38:14 Europe/Berlin] PHP Fatal error:  Uncaught ErrorException: Undefined variable $stmt in C:\xampp\htdocs\smart-meal-planner\get_shopping_items.php:53
+Stack trace:
+#0 C:\xampp\htdocs\smart-meal-planner\get_shopping_items.php(53): {closure}(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 53)
+#1 {main}
+  thrown in C:\xampp\htdocs\smart-meal-planner\get_shopping_items.php on line 53
+[28-May-2025 17:38:27 Europe/Berlin] PHP Fatal error:  Uncaught ErrorException: Undefined variable $stmt in C:\xampp\htdocs\smart-meal-planner\get_shopping_items.php:53
+Stack trace:
+#0 C:\xampp\htdocs\smart-meal-planner\get_shopping_items.php(53): {closure}(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 53)
+#1 {main}
+  thrown in C:\xampp\htdocs\smart-meal-planner\get_shopping_items.php on line 53
+[28-May-2025 17:38:46 Europe/Berlin] PHP Fatal error:  Uncaught ErrorException: Undefined variable $stmt in C:\xampp\htdocs\smart-meal-planner\get_shopping_items.php:53
+Stack trace:
+#0 C:\xampp\htdocs\smart-meal-planner\get_shopping_items.php(53): {closure}(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 53)
+#1 {main}
+  thrown in C:\xampp\htdocs\smart-meal-planner\get_shopping_items.php on line 53
+[28-May-2025 18:15:21 Europe/Berlin] Raw input received: {"username":"ayush","password":"ayushsk"}
+[28-May-2025 18:15:21 Europe/Berlin] Decoded data: Array
+(
+    [username] => ayush
+    [password] => ayushsk
+)
+
+[28-May-2025 18:15:21 Europe/Berlin] Sanitized username: ayush
+[28-May-2025 18:15:21 Europe/Berlin] User successfully registered with ID: 2
+[28-May-2025 18:15:29 Europe/Berlin] Login attempt - Raw input received: {"username":"ayush","password":"ayushsk"}
+[28-May-2025 18:15:29 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => ayush
+    [password] => ayushsk
+)
+
+[29-May-2025 19:55:43 Europe/Berlin] Login attempt - Raw input received: {"username":"test@example.com","password":"123456"}
+[29-May-2025 19:55:43 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => test@example.com
+    [password] => 123456
+)
+
+[29-May-2025 19:55:43 Europe/Berlin] Login failed: Invalid password for user - test@example.com
+[29-May-2025 19:55:43 Europe/Berlin] Login error: Invalid username or password
+[29-May-2025 19:55:44 Europe/Berlin] Login attempt - Raw input received: {"username":"test@example.com","password":"1234567"}
+[29-May-2025 19:55:44 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => test@example.com
+    [password] => 1234567
+)
+
+[29-May-2025 19:55:44 Europe/Berlin] Login failed: Invalid password for user - test@example.com
+[29-May-2025 19:55:44 Europe/Berlin] Login error: Invalid username or password
+[29-May-2025 19:55:59 Europe/Berlin] Raw input received: {"username":"ayuss","password":"abdc1234"}
+[29-May-2025 19:55:59 Europe/Berlin] Decoded data: Array
+(
+    [username] => ayuss
+    [password] => abdc1234
+)
+
+[29-May-2025 19:55:59 Europe/Berlin] Sanitized username: ayuss
+[29-May-2025 19:55:59 Europe/Berlin] User successfully registered with ID: 3
+[29-May-2025 19:56:07 Europe/Berlin] Login attempt - Raw input received: {"username":"ayuss","password":"abcd1234"}
+[29-May-2025 19:56:07 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => ayuss
+    [password] => abcd1234
+)
+
+[29-May-2025 19:56:07 Europe/Berlin] Login failed: Invalid password for user - ayuss
+[29-May-2025 19:56:07 Europe/Berlin] Login error: Invalid username or password
+[29-May-2025 19:56:09 Europe/Berlin] Login attempt - Raw input received: {"username":"ayuss","password":"abcd1234"}
+[29-May-2025 19:56:09 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => ayuss
+    [password] => abcd1234
+)
+
+[29-May-2025 19:56:09 Europe/Berlin] Login failed: Invalid password for user - ayuss
+[29-May-2025 19:56:09 Europe/Berlin] Login error: Invalid username or password
+[29-May-2025 19:56:15 Europe/Berlin] Login attempt - Raw input received: {"username":"ayuss","password":"abcd1234"}
+[29-May-2025 19:56:15 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => ayuss
+    [password] => abcd1234
+)
+
+[29-May-2025 19:56:15 Europe/Berlin] Login failed: Invalid password for user - ayuss
+[29-May-2025 19:56:15 Europe/Berlin] Login error: Invalid username or password
+[29-May-2025 19:56:19 Europe/Berlin] Login attempt - Raw input received: {"username":"ayuss","password":"abcd1234"}
+[29-May-2025 19:56:19 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => ayuss
+    [password] => abcd1234
+)
+
+[29-May-2025 19:56:19 Europe/Berlin] Login failed: Invalid password for user - ayuss
+[29-May-2025 19:56:19 Europe/Berlin] Login error: Invalid username or password
+[29-May-2025 19:57:15 Europe/Berlin] Login attempt - Raw input received: {"username":"ayush","password":"123456"}
+[29-May-2025 19:57:15 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => ayush
+    [password] => 123456
+)
+
+[29-May-2025 19:57:16 Europe/Berlin] Login failed: Invalid password for user - ayush
+[29-May-2025 19:57:16 Europe/Berlin] Login error: Invalid username or password
+[29-May-2025 19:57:20 Europe/Berlin] Login attempt - Raw input received: {"username":"ayush","password":"ayushsk"}
+[29-May-2025 19:57:20 Europe/Berlin] Login attempt - Decoded data: Array
+(
+    [username] => ayush
+    [password] => ayushsk
+)
+
+[29-May-2025 20:04:53 Europe/Berlin] Raw input received: {"username":"nish","password":"123456"}
+[29-May-2025 20:04:53 Europe/Berlin] Decoded data: Array
+(
+    [username] => nish
+    [password] => 123456
+)
+
+[29-May-2025 20:04:53 Europe/Berlin] Sanitized username: nish
+[29-May-2025 20:04:53 Europe/Berlin] User successfully registered with ID: 4
+[29-May-2025 20:05:05 Europe/Berlin] Raw input received: {"username":"athreya","password":"123456"}
+[29-May-2025 20:05:05 Europe/Berlin] Decoded data: Array
+(
+    [username] => athreya
+    [password] => 123456
+)
+
+[29-May-2025 20:05:05 Europe/Berlin] Sanitized username: athreya
+[29-May-2025 20:05:05 Europe/Berlin] User successfully registered with ID: 5
+[29-May-2025 20:05:21 Europe/Berlin] Raw input received: {"username":"avaanii","password":"123456"}
+[29-May-2025 20:05:21 Europe/Berlin] Decoded data: Array
+(
+    [username] => avaanii
+    [password] => 123456
+)
+
+[29-May-2025 20:05:21 Europe/Berlin] Sanitized username: avaanii
+[29-May-2025 20:05:22 Europe/Berlin] User successfully registered with ID: 6
+[29-May-2025 20:05:33 Europe/Berlin] Raw input received: {"username":"nishhhhhuu","password":"1234567"}
+[29-May-2025 20:05:33 Europe/Berlin] Decoded data: Array
+(
+    [username] => nishhhhhuu
+    [password] => 1234567
+)
+
+[29-May-2025 20:05:33 Europe/Berlin] Sanitized username: nishhhhhuu
+[29-May-2025 20:05:33 Europe/Berlin] User successfully registered with ID: 7

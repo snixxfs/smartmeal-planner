@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Smart Meal Planner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #7C4DFF;
+            --primary-dark: #5E35B1;
+            --primary-light: #B39DDB;
+            --accent: #FF4081;
+            --dark: #121212;
+            --card-bg: #1E1E1E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --error: #FF5252;
+            --success: #69F0AE;
+            --warning: #FFC107;
+            --info: #2196F3;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #7C4DFF 0%, #448AFF 100%);
+            --gradient-accent: linear-gradient(135deg, #FF4081 0%, #FF9100 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .admin-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .logo i {
+            font-size: 2rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            transform: translateX(5px);
+        }
+
+        .nav-item i {
+            font-size: 1.2rem;
+        }
+
+        .main-content {
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .admin-details {
+            text-align: right;
+        }
+
+        .admin-name {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .admin-role {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-title {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .stat-icon.users { background: rgba(124, 77, 255, 0.1); color: var(--primary); }
+        .stat-icon.meals { background: rgba(33, 150, 243, 0.1); color: var(--info); }
+        .stat-icon.active { background: rgba(105, 240, 174, 0.1); color: var(--success); }
+        .stat-icon.new { background: rgba(255, 193, 7, 0.1); color: var(--warning); }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-change {
+            font-size: 0.9rem;
+            color: var(--success);
+        }
+
+        .stat-change.negative {
+            color: var(--error);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .user-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .status-online {
+            background: rgba(105, 240, 174, 0.1);
+            color: var(--success);
+        }
+
+        .status-offline {
+            background: rgba(255, 82, 82, 0.1);
+            color: var(--error);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-online .status-dot {
+            background: var(--success);
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        .status-offline .status-dot {
+            background: var(--error);
+        }
+
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .activity-item:hover {
+            background: rgba(124, 77, 255, 0.05);
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .activity-icon.login { background: rgba(105, 240, 174, 0.1); color: var(--success); }
+        .activity-icon.logout { background: rgba(255, 82, 82, 0.1); color: var(--error); }
+        .activity-icon.meal { background: rgba(33, 150, 243, 0.1); color: var(--info); }
+        .activity-icon.shopping { background: rgba(255, 193, 7, 0.1); color: var(--warning); }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-text {
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-time {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <span>Smart Meal Planner</span>
+            </div>
+            <nav>
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    Users
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    Meals
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-shopping-basket"></i>
+                    Shopping Lists
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Admin Dashboard</h1>
+                <div class="admin-info">
+                    <div class="admin-avatar">A</div>
+                    <div class="admin-details">
+                        <div class="admin-name">Admin</div>
+                        <div class="admin-role">Administrator</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Total Users</div>
+                        <div class="stat-icon users">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="total-users">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Total Meals</div>
+                        <div class="stat-icon meals">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="total-meals">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Active Users</div>
+                        <div class="stat-icon active">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="active-users">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">New Users Today</div>
+                        <div class="stat-icon new">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="new-users">0</div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Recent Users</div>
+                        <div class="card-actions">
+                            <button class="btn btn-outline" onclick="exportUsers()">Export</button>
+                            <button class="btn btn-primary">View All</button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Status</th>
+                                    <th>Last Active</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table-body">
+                                <!-- Users will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Recent Activity</div>
+                        <div class="card-actions">
+                            <button class="btn btn-outline">View All</button>
+                        </div>
+                    </div>
+                    <div class="activity-list" id="activity-list">
+                        <!-- Activities will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Details Modal -->
+    <div id="userDetailsModal" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center;">
+      <div style="background-color: var(--card-bg); margin: auto; padding: 20px; border-radius: 10px; width: 80%; max-width: 500px; box-shadow: var(--shadow-lg); position: relative;">
+        <span style="color: var(--text-secondary); float: right; font-size: 28px; font-weight: bold; cursor: pointer;" onclick="document.getElementById('userDetailsModal').style.display = 'none';">&times;</span>
+        <h3 style="color: var(--text-primary); margin-top: 0;" id="userDetailsTitle">User Details</h3>
+        <div id="userDetailsContent" style="color: var(--text-secondary);"></div>
+      </div>
+    </div>
+
+    <script>
+        // Initialize admin state
+        const adminState = {
+            init() {
+                const adminData = sessionStorage.getItem('admin');
+                if (!adminData) {
+                    this.redirectToLogin();
+                    return;
+                }
+                
+                try {
+                    this.admin = JSON.parse(adminData);
+                    if (!this.admin || !this.admin.id) {
+                        console.error("Admin data missing or invalid in session storage:", this.admin);
+                        this.redirectToLogin();
+                        return;
+                    }
+                } catch (e) {
+                    console.error("Error parsing admin data from session storage:", e);
+                    this.redirectToLogin();
+                    return;
+                }
+            },
+            
+            redirectToLogin() {
+                window.location.href = "admin_login.html";
+            }
+        };
+
+        // Load all dashboard data
+        async function loadDashboardData() {
+            try {
+                console.log('Fetching dashboard data...');
+                const response = await fetch('get_admin_stats.php');
+                
+                if (!response.ok) {
+                     console.error('HTTP error fetching dashboard data:', response.status);
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                if (!data.success) {
+                    console.error('API error fetching dashboard data:', data.message);
+                    throw new Error(data.message);
+                }
+
+                console.log('Dashboard data received:', data);
+
+                // Update stats
+                updateStats(data.stats);
+
+                console.log('Recent Activity data received:', data.recentActivity);
+
+                // Update users table
+                updateUsersTable(data.users);
+
+                // Update recent activity
+                updateRecentActivity(data.recentActivity);
+
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+                // Optionally display an error message on the dashboard
+            }
+        }
+
+        // Update stats section
+        function updateStats(stats) {
+            document.getElementById('total-users').textContent = stats.totalUsers || 0;
+            document.getElementById('total-meals').textContent = stats.totalMeals || 0;
+            document.getElementById('active-users').textContent = stats.activeUsers || 0;
+            // Assuming there's an element for new users today in stats or calculate from users list if needed
+            // For now, keeping the original logic for new users based on the full user list
+             if (stats.newUsersToday !== undefined) {
+                 document.getElementById('new-users').textContent = stats.newUsersToday;
+             } else if (stats.users) {
+                 const today = new Date();
+                 document.getElementById('new-users').textContent = stats.users.filter(u => {
+                     const created = new Date(u.created_at);
+                     return created.getDate() === today.getDate() &&
+                            created.getMonth() === today.getMonth() &&
+                            created.getFullYear() === today.getFullYear();
+                 }).length;
+             }
+        }
+
+        // Update users table
+        function updateUsersTable(users) {
+            const tbody = document.getElementById('users-table-body');
+            tbody.innerHTML = ''; // Clear existing rows
+
+            if (!users || users.length === 0) {
+                 tbody.innerHTML = `<tr><td colspan=\"4\" class=\"empty-state\">No users found.</td></tr>`;
+                 return;
+            }
+
+            users.forEach(user => {
+                // Handle null or 'Never' last_activity from backend
+                const lastActiveDate = user.last_activity && user.last_activity !== 'Never' 
+                    ? new Date(user.last_activity) 
+                    : null;
+
+                const now = new Date();
+                // Determine online status based on last activity within the last 5 minutes
+                const isOnline = lastActiveDate instanceof Date && !isNaN(lastActiveDate.getTime()) && (now - lastActiveDate) < 300000; // 5 minutes
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                ${user.username ? user.username.charAt(0).toUpperCase() : 'U'}
+                            </div>
+                            <div>
+                                <div style="font-weight: bold;">${user.username || 'N/A'}</div>
+                                <div style="font-size: 0.9rem; color: var(--text-secondary);">${user.email || 'N/A'}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="user-status ${isOnline ? 'status-online' : 'status-offline'}">
+                            <div class="status-dot"></div>
+                            ${isOnline ? 'Online' : 'Offline'}
+                        </div>
+                    </td>
+                    <td>${lastActiveDate ? formatLastActive(lastActiveDate) : 'Never'}</td>
+                    <td>
+                        <button class="btn btn-outline" onclick="viewUser(${user.id})">View</button>
+                        <button class="btn btn-danger" onclick="deleteUser(${user.id})">Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Update recent activity list
+        function updateRecentActivity(activities) {
+            const activityList = document.getElementById('activity-list');
+            activityList.innerHTML = ''; // Clear existing items
+
+            if (!activities || activities.length === 0) {
+                activityList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-history"></i>
+                        <p>No recent activity</p>
+                    </div>
+                `;
+                return;
+            }
+
+            activities.forEach(activity => {
+                const li = document.createElement('li');
+                li.className = 'activity-item';
+                
+                let icon = 'fas fa-info-circle';
+                let iconClass = 'activity-icon';
+                let activityMessage = activity.message || `User ${activity.username} performed action`; // Default message
+
+                // Customize message and icon based on activity type and details
+                if (activity.type === 'login') {
+                    icon = 'fas fa-sign-in-alt';
+                    iconClass += ' login';
+                    activityMessage = `User ${activity.username} logged in.`;
+                } else if (activity.type === 'logout') {
+                    icon = 'fas fa-sign-out-alt';
+                    iconClass += ' logout';
+                     activityMessage = `User ${activity.username} logged out.`;
+                } else if (activity.type === 'meal') {
+                    icon = 'fas fa-utensils';
+                    iconClass += ' meal';
+                    activityMessage = `User ${activity.username} created meal: ${activity.detail || 'N/A'}.`;
+                } else if (activity.type === 'shopping') {
+                    icon = 'fas fa-shopping-basket';
+                    iconClass += ' shopping';
+                     activityMessage = `User ${activity.username} updated shopping list item: ${activity.detail || 'N/A'}.`;
+                } else {
+                    // Handle potentially other activity types or use a generic message
+                     activityMessage = `User ${activity.username}: ${activity.type} - ${activity.detail || 'N/A'}.`;
+                }
+
+                li.innerHTML = `
+                    <div class="${iconClass}">
+                        <i class="${icon}"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-text">${activityMessage}</div>
+                        <div class="activity-time">${formatActivityTime(new Date(activity.created_at))}</div>
+                    </div>
+                `;
+                activityList.appendChild(li);
+            });
+        }
+
+        // Helper functions
+        function formatLastActive(date) {
+            const now = new Date();
+            const diff = now - date;
+            
+            if (diff < 60000) return 'Just now';
+            if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
+            if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
+            return date.toLocaleDateString();
+        }
+
+        function formatActivityTime(date) {
+             const now = new Date();
+            const activityDate = new Date(date);
+            const diff = now - activityDate;
+            
+            if (diff < 60000) return 'Just now';
+            if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
+            if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
+            return activityDate.toLocaleDateString() + ' ' + activityDate.toLocaleTimeString();
+        }
+
+        function isToday(date) {
+            const today = new Date();
+            return date.getDate() === today.getDate() &&
+                   date.getMonth() === today.getMonth() &&
+                   date.getFullYear() === today.getFullYear();
+        }
+
+        function viewUser(userId) {
+            console.log('Attempting to view user:', userId);
+
+             // Fetch user details
+             fetch(`get_user_details.php?userId=${userId}`)
+                 .then(response => {
+                     if (!response.ok) {
+                         throw new Error(`HTTP error! status: ${response.status}`);
+                     }
+                     return response.json();
+                 })
+                 .then(data => {
+                     if (data.success) {
+                         console.log('User details fetched:', data.user);
+                         // Display user details in the modal
+                         const modal = document.getElementById('userDetailsModal');
+                         const content = document.getElementById('userDetailsContent');
+                         content.innerHTML = `
+                             <p><strong>ID:</strong> ${data.user.id}</p>
+                             <p><strong>Username:</strong> ${data.user.username}</p>
+                             <p><strong>Created At:</strong> ${new Date(data.user.created_at).toLocaleString()}</p>
+                             <!-- Add more user details here if available -->
+                         `;
+                         modal.style.display = 'flex'; // Use flex to center modal content
+                     } else {
+                         console.error('Error fetching user details:', data.message);
+                         alert('Could not fetch user details: ' + data.message);
+                     }
+                 })
+                 .catch(error => {
+                     console.error('Error fetching user details:', error);
+                     alert('An error occurred while fetching user details.');
+                 });
+        }
+
+        // Export users as CSV
+        function exportUsers() {
+            window.location.href = 'export_users.php';
+        }
+
+        // Delete a user
+        async function deleteUser(userId) {
+            if (confirm('Are you sure you want to delete this user?')) {
+                try {
+                    console.log('Attempting to delete user:', userId);
+ 
+                    const response = await fetch('delete_user.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ userId: userId })
+                    });
+ 
+                    const data = await response.json();
+ 
+                    if (data.success) {
+                        console.log('User deleted successfully:', userId);
+                        // Refresh the user list
+                        loadDashboardData(); 
+                    } else {
+                        console.error('Error deleting user:', data.message);
+                        alert('Could not delete user: ' + data.message);
+                    }
+                } catch (error) {
+                    console.error('Error deleting user:', error);
+                    alert('An error occurred while deleting the user.');
+                }
+            }
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            adminState.init(); // Check session first
+            // If init passes, load dashboard data
+            if (adminState.admin && adminState.admin.id) {
+                 loadDashboardData();
+            
+                // Refresh data periodically
+                setInterval(loadDashboardData, 60000); // Refresh every minute
+            }
+        });
+    </script>
+</body>
+</html> 
