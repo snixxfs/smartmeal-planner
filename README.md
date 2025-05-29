@@ -32,10 +32,6 @@ Smart Meal Planner is a web-based meal planning application that helps users eff
 - Password encryption
 - Input validation to prevent SQL injection
 
-## 📸 Screenshots
-
-*(You can add screenshots here)*
-
 ## 🚀 Installation Guide
 
 1. **Clone the repository:**
